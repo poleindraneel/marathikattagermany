@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>मराठी वर्णमाला पूर्ण करा</title>
+    <style>
+        body {
+            font-family: 'Lohit Devanagari', sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+        }
+
+        table {
+            margin: auto;
+            border-spacing: 15px;
+        }
+
+        td {
+            font-size: 28px;
+            padding: 5px;
+        }
+
+        select {
+            font-size: 24px;
+        }
+
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+
+        .wrong {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>🌟 वर्णमाला पूर्ण करा 🌟</h2>
+    <form id="quizForm">
+        <table>
+            <tr>
+                <td>अ</td>
+                <td>
+                    <select id="q1">
+                        <option value="">--</option>
+                        <option value="आ">आ</option>
+                        <option value="इ">इ</option>
+                        <option value="ई">ई</option>
+                    </select>
+                </td>
+                <td>इ</td>
+                <td>
+                    <select id="q2">
+                        <option value="">--</option>
+                        <option value="ई">ई</option>
+                        <option value="उ">उ</option>
+                        <option value="ऊ">ऊ</option>
+                    </select>
+                </td>
+                <td>उ</td>
+                <td>
+                    <select id="q3">
+                        <option value="">--</option>
+                        <option value="ए">ए</option>
+                        <option value="उ">उ</option>
+                        <option value="ऊ">ऊ</option>
+                    </select>
+                </td>
+                <td>ए</td>
+                <td>
+                    <select id="q4">
+                        <option value="">--</option>
+                        <option value="औ">औ</option>
+                        <option value="ऐ">ऐ</option>
+                        <option value="ऊ">ऊ</option>
+                    </select>
+                </td>
+                <td>ओ</td>
+                <td>
+                    <select id="q5">
+                        <option value="">--</option>
+                        <option value="औ">औ</option>
+                        <option value="अं">अं</option>
+                        <option value="अः">अः</option>
+                    </select>
+                </td>
+                <td>अं</td>
+                <td>
+                    <select id="q6">
+                        <option value="">--</option>
+                        <option value="औ">औ</option>
+                        <option value="अं">अं</option>
+                        <option value="अः">अः</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+    <div id="result" style="margin-top:20px; font-size: 22px;"></div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            const answers = {
+                q1: 'आ',
+                q2: 'ई',
+                q3: 'ऊ',
+                q4: 'ऐ',
+                q5: 'औ',
+                q6: 'अः',
+            };
+
+            let feedback = '';
+
+            for (let q in answers) {
+                const selected = document.getElementById(q).value;
+                if (selected === answers[q]) {
+                    feedback += `प्रश्न ${q.slice(1)}: ✅ बरोबर<br>`;
+                    score++;
+                } else {
+                    feedback += `प्रश्न ${q.slice(1)}: ❌ चुकलं (योग्य उत्तर: ${answers[q]})<br>`;
+                }
+            }
+
+            document.getElementById("result").innerHTML = feedback + `<br><strong>एकूण गुण: ${score}/6</strong>`;
+        }
+    </script>
+</body>
+
+</html>
